@@ -50,7 +50,7 @@ def index():
         return(render_template("index.html", result1 = sLR, result2 = sDT, result3 = sRF, result4 = sXG, result5 = sNN))
     
     else: 
-        s = "1"
+        s = "."
         return(render_template("index.html", result1 = s, result2 = s, result3 = s, result4 = s, result5 = s))
 
 

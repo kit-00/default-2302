@@ -46,12 +46,17 @@ def index():
     
         modelNN = load_model("keras_model")
         predNN = modelNN.predict([[float(Income), float(Age), float(Loan)]])
-        sNN = "Predicted default on credit card (Neural Network): " + str(predNN)
-        return(render_template("index.html", result1 = sLR, result2 = sDT, result3 = sRF, result4 = sXG, result5 = sNN))
+        sNN = "Predicted default on credit card (Neural Network-Keras): " + str(predNN)
+        
+        modelMLP = pickle.load(open("mlp_model.sav", 'rb'))
+        predMLP = modelMLP.predict([[float(Income), float(Age), float(Loan)]])
+        sMLP = "Predicted default on credit card (Neural Network-MLPClassifier): " + str(predMLP)
+        
+        return(render_template("index.html", result1 = sLR, result2 = sDT, result3 = sRF, result4 = sXG, result5 = sNN, result6 = sMLP))
     
     else: 
         s = "."
-        return(render_template("index.html", result1 = s, result2 = s, result3 = s, result4 = s, result5 = s))
+        return(render_template("index.html", result1 = s, result2 = s, result3 = s, result4 = s, result5 = s, results6 = s))
 
 
 # In[ ]:
